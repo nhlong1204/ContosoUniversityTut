@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContosoUniversityTut.Models
 {
@@ -13,6 +14,8 @@ namespace ContosoUniversityTut.Models
         public int EnrollmentID { get; set; }//field with "ID" will be treated as Key
         public int CourseID { get; set; }
         public int StudentID { get; set; }
+
+        [DisplayFormat(NullDisplayText = "No grade")]
         public Grade? Grade { get; set; }
 
         public virtual Course Course { get; set; }

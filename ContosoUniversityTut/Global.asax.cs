@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity.Infrastructure.Interception;
+using ContosoUniversityTut.DAL;
 
 namespace ContosoUniversityTut
 {
@@ -16,6 +18,10 @@ namespace ContosoUniversityTut
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Couse interceptor to be run whem EF sends queries to db
+            DbInterception.Add(new SchoolInterceptorTransientErrors());
+            DbInterception.Add(new SchoolInterceptorLogging());
         }
     }
 }
